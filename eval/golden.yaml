@@ -1,0 +1,67 @@
+# Golden questions over the synthetic CloudBox corpus.
+# relevant: document ids (file stems) that contain the answer.
+# expected: key facts the answer should mention (case-insensitive substring match).
+- id: q01
+  question: How much does the Pro plan cost per month?
+  relevant: [01_pricing_en]
+  expected: ["19.90"]
+- id: q02
+  question: What uptime does CloudBox target and what credit applies below it?
+  relevant: [04_sla_support_en]
+  expected: ["99.9%"]
+- id: q03
+  question: What is the API rate limit on the Pro plan?
+  relevant: [07_api_limits_en]
+  expected: ["60 requests"]
+- id: q04
+  question: How much is the total due on invoice CB-2025-1103?
+  relevant: [03_invoice_example_ua]
+  expected: ["49.98"]
+- id: q05
+  question: How are annual payments refunded after cancellation?
+  relevant: [05_refunds_policy_ua]
+  expected: ["пропорційно"]
+- id: q06
+  question: How long are files kept after the contract is terminated?
+  relevant: [08_data_retention_ua]
+  expected: ["30 днів"]
+- id: q07
+  question: Which jurisdiction governs the contract?
+  relevant: [02_contract_ua]
+  expected: ["Англійське право"]
+- id: q08
+  question: Is single sign-on available, and on which plan?
+  relevant: [06_security_en]
+  expected: ["Team plan only"]
+- id: q09
+  question: How much does an additional Team user cost?
+  relevant: [09_team_admin_faq_en]
+  expected: ["$8.00"]
+- id: q10
+  question: What is the first response time for a P1 ticket?
+  relevant: [10_support_escalation_ua]
+  expected: ["30 хвилин"]
+- id: q11
+  question: Скільки днів триває тестовий період з повним поверненням?
+  relevant: [05_refunds_policy_ua]
+  expected: ["14 днів"]
+- id: q12
+  question: How long do deleted files stay in the trash on the Team plan?
+  relevant: [08_data_retention_ua]
+  expected: ["90 днів"]
+- id: q13
+  question: What are the RTO and RPO?
+  relevant: [04_sla_support_en]
+  expected: ["2 hours"]
+- id: q14
+  question: Does phone support exist on the Pro plan, and what does Team get?
+  relevant: [04_sla_support_en, 10_support_escalation_ua]
+  expected: ["Phone"]
+- id: q15
+  question: What happens when the API rate limit is exceeded?
+  relevant: [07_api_limits_en]
+  expected: ["429"]
+- id: q16
+  question: Where is customer data stored?
+  relevant: [02_contract_ua]
+  expected: ["ЄС"]

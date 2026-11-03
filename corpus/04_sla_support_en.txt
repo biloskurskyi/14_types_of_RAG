@@ -1,0 +1,6 @@
+CloudBox SLA & Support (EN)
+Uptime target: 99.9% monthly.
+Credit: if uptime < 99.9%, 10% monthly fee credit; < 99.0%, 25%.
+Support tiers: Email (Starter), Chat (Pro), Chat+Phone (Team).
+RTO: 2 hours; RPO: 15 minutes.
+Backups: hourly for 24h, daily for 30d.

@@ -1,0 +1,8 @@
+CloudBox Pricing (EN)
+Plan: Starter — $9.90/month, 200 GB.
+Plan: Pro — $19.90/month, 2 TB.
+Plan: Team — $49.00/month, 5 TB + 5 users.
+Annual discount: 15% (prepaid).
+Overage: $0.02 per GB.
+Tax (VAT): 20% if applicable.
+Example: Pro monthly with VAT → 19.90 * 1.2 = 23.88 USD.

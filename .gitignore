@@ -207,7 +207,6 @@ marimo/_lsp/
 __marimo__/
 
 # Project specific
-docs/
 infra/.env
 backend/.env
 logs/
@@ -215,3 +214,4 @@ logs/
 .claude/
 .idea/
 data/
+traces/

@@ -1,0 +1,9 @@
+CloudBox API and Rate Limits (EN)
+
+The public REST API is available on Pro and Team plans. Starter accounts can use the web and desktop apps only.
+
+Rate limits: Pro — 60 requests per minute; Team — 300 requests per minute. Exceeding the limit returns HTTP 429 with a Retry-After header.
+
+Maximum upload size: 5 GB per file through the API, 20 GB per file through the desktop app.
+
+Webhooks: Team accounts can register up to 10 webhooks for file events (created, updated, deleted). Webhook deliveries are retried 5 times with exponential backoff.

@@ -63,7 +63,7 @@ class GraphStrategy(RetrievalStrategy):
         for entity in q_entities:
             for cid in graph.chunks_of[entity]:
                 scores[cid] += graph.idf(entity)
-        seeds = sorted(scores, key=lambda c: -scores[c])[: query.k]
+        seeds = sorted(scores, key=lambda c: (-scores[c], c))[: query.k]
         hop_weight = float(self.params.get("hop_weight", 0.3))
         for seed in seeds:
             for entity in graph.entities_of[seed] - q_entities:

@@ -48,6 +48,18 @@ def expanded_terms(text: str) -> set[str]:
     return terms
 
 
+def _context_blocks(context: str) -> list[tuple[int, str]]:
+    """Parse ``[n] text`` blocks; lines without a marker continue the previous block."""
+    blocks: list[tuple[int, str]] = []
+    for line in context.splitlines():
+        match = _CONTEXT_LINE.match(line)
+        if match:
+            blocks.append((int(match.group(1)), match.group(2)))
+        elif blocks:
+            blocks[-1] = (blocks[-1][0], f"{blocks[-1][1]}\n{line}")
+    return blocks
+
+
 def _other_script(token: str) -> list[str]:
     is_cyrillic = any("\u0400" <= ch <= "\u04ff" for ch in token)
     return [w for w in synonyms(token) if any("\u0400" <= c <= "\u04ff" for c in w) != is_cyrillic]
@@ -130,12 +142,9 @@ class FakeLLM:
     def _task_answer(self, sec: dict[str, str]) -> str:
         terms = expanded_terms(sec.get("question", ""))
         sentences: list[tuple[int, int, str, set[str]]] = []
-        for order, line in enumerate(sec.get("context", "").splitlines()):
-            match = _CONTEXT_LINE.match(line)
-            if match:
-                for sentence in split_sentences(match.group(2)):
-                    sent_terms = set(content_terms(sentence))
-                    sentences.append((order, int(match.group(1)), sentence, sent_terms))
+        for order, (marker, text) in enumerate(_context_blocks(sec.get("context", ""))):
+            for sentence in split_sentences(text):
+                sentences.append((order, marker, sentence, set(content_terms(sentence))))
         df: dict[str, int] = {}
         for *_, sent_terms in sentences:
             for term in sent_terms:

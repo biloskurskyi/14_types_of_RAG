@@ -103,8 +103,16 @@ def register(name: str) -> Callable[[S], S]:
     return decorator
 
 
+DISPLAY_ORDER = (
+    "dense", "bm25", "hybrid_rrf", "hybrid_weighted", "multi_query", "hyde", "parent_document",
+    "mmr", "rerank", "compression", "self_query", "corrective", "agentic", "graph", "adaptive",
+)  # fmt: skip
+
+
 def available() -> list[str]:
-    return list(_REGISTRY)
+    """Registered strategy names: baselines first, composite strategies last."""
+    rank = {name: i for i, name in enumerate(DISPLAY_ORDER)}
+    return sorted(_REGISTRY, key=lambda n: (rank.get(n, len(rank)), n))
 
 
 def get_class(name: str) -> type[RetrievalStrategy]:

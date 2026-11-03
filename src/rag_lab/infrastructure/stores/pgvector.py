@@ -96,8 +96,10 @@ class PgVectorStore:
             """
         )
 
-    def truncate(self) -> None:
-        self.conn.execute("TRUNCATE rag_chunks, rag_parents")
+    def reset(self) -> None:
+        """Drop and recreate the tables (needed when the embedding dimension changes)."""
+        self.conn.execute("DROP TABLE IF EXISTS rag_chunks, rag_parents")
+        self.create_schema()
 
     def add(self, chunks: Sequence[Chunk], vectors: Sequence[Sequence[float]]) -> None:
         from pgvector import Vector  # noqa: PLC0415

@@ -27,8 +27,7 @@ def pg_lab(documents: list[Document]) -> RagLab:
     settings = Settings(_env_file=None, backend="postgres", database_url=DSN, embedding_dim=128)
     lab = build_lab(settings)
     store = lab.ctx.vector_store
-    store.conn.execute("DROP TABLE IF EXISTS rag_chunks, rag_parents")
-    store.create_schema()
+    store.reset()
     lab.ingest(documents)
     yield lab
     store.conn.close()
@@ -63,6 +62,8 @@ def test_metadata_filter_and_parents(pg_lab: RagLab) -> None:
     assert all("#p" in h.chunk.id for h in parents)
 
 
-@pytest.mark.parametrize("name", ["hybrid_rrf", "mmr", "rerank", "multi_query"])
+@pytest.mark.parametrize(
+    "name", ["hybrid_rrf", "mmr", "rerank", "multi_query", "corrective", "agentic", "graph"]
+)
 def test_strategies_run_on_postgres(pg_lab: RagLab, name: str) -> None:
     assert pg_lab.strategy(name).retrieve(Query("Team plan phone support", k=3))

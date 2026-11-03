@@ -1,0 +1,9 @@
+CloudBox Team Administration FAQ (EN)
+
+How many users are included in the Team plan? Five users are included. Each additional user costs $8.00 per month.
+
+How do I add a user? An administrator opens Admin Console, then Members, then Invite, and enters the email address. The invitation link is valid for 7 days.
+
+Can storage be shared? Yes. The 5 TB of the Team plan is a shared pool for all members; there are no per-user quotas unless an administrator sets them.
+
+How do I change the plan? Upgrades take effect immediately and are prorated. Downgrades take effect at the end of the current billing period.

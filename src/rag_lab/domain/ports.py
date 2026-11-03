@@ -98,3 +98,12 @@ def iter_batches(items: Sequence[Any], size: int) -> Iterator[Sequence[Any]]:
     """Yield ``items`` in slices of ``size`` (helper shared by adapters)."""
     for start in range(0, len(items), size):
         yield items[start : start + size]
+
+
+@runtime_checkable
+class DocStore(Protocol):
+    """Key-value storage for parent chunks (small-to-big retrieval)."""
+
+    def put(self, chunks: Sequence[Chunk]) -> None: ...
+
+    def get(self, chunk_id: str) -> Chunk | None: ...

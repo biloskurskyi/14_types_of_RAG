@@ -34,8 +34,8 @@ class Settings(BaseSettings):
     cross_encoder_model: str = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 
     chunker: Literal["recursive", "fixed", "sentence"] = "recursive"
-    chunk_size: int = Field(default=320, ge=32)
-    chunk_overlap: int = Field(default=40, ge=0)
+    chunk_size: int = Field(default=200, ge=32)
+    chunk_overlap: int = Field(default=30, ge=0)
 
     corpus_dir: Path = Path("corpus")
     trace_dir: Path = Path("traces")

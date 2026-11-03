@@ -26,10 +26,10 @@ class Chunker(ABC):
     def split_text(self, text: str) -> list[str]: ...
 
     def split(self, doc: Document, *, id_prefix: str | None = None) -> list[Chunk]:
-        prefix = id_prefix or doc.id
+        prefix = id_prefix if id_prefix is not None else f"{doc.id}#"
         return [
             Chunk(
-                id=f"{prefix}#{i}",
+                id=f"{prefix}{i}",
                 doc_id=doc.id,
                 text=piece,
                 position=i,

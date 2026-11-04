@@ -1,6 +1,6 @@
 # RAG Retrieval Lab
 
-[![CI](https://github.com/biloskurskyi/14_types_of_RAG/actions/workflows/ci.yml/badge.svg)](https://github.com/biloskurskyi/14_types_of_RAG/actions/workflows/ci.yml)
+[![CI](https://github.com/biloskurskyi/rag-retrieval-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/biloskurskyi/rag-retrieval-lab/actions/workflows/ci.yml)
 
 A learning project that puts **15 retrieval-augmented generation (RAG) strategies behind one
 interface** so they can be compared on the same corpus, the same questions and the same metrics.
